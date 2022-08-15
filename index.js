@@ -10,10 +10,11 @@ const writeFileAsync = util.promisify(fs.writeFile);
 // const questions = [];
 const questions = () =>
     inquirer.prompt([
+       
         {
             type: "input",
-            name: "author",
-            message: "What is the author's name?"
+            name: "title",
+            message: "What is your project title?"
         },
         {
             type: "input",
@@ -27,18 +28,8 @@ const questions = () =>
         },
         {
             type: "input",
-            name: "title",
-            message: "What is your project title?"
-        },
-        {
-            type: "input",
             name: "description",
             message: "Write a brief description of your project:"
-        },
-        {
-            type: "input",
-            name: "author",
-            message: "What is the author's name?"
         },
         {
             type: "list",
@@ -64,13 +55,13 @@ const questions = () =>
         {
             type: "input",
             name: "contributing",
-            message: "What guidelines should the user know about contributing to the repo??"
+            message: "What guidelines should the user know about contributing to the repo?"
         },
     ]);
 
 // TODO: Create a function to write README file
 // function writeToFile(fileName, data) {}
-function generateReadme(data){
+function generateMD(data){
     return`
         #${data.title}
         ${badge}
@@ -113,11 +104,11 @@ function generateReadme(data){
         The project is licensed under:
         ${data.license}
 
-        `   
-   
+        `      
 }
 
 // TODO: Create a function to initialize app
+
 function init() {}
 questions()
 .then((data) => writeFileAsync('generatedREADME.md', generateMD(data)))
@@ -126,3 +117,15 @@ questions()
 
 // Function call to initialize app
 init();
+
+
+// https://github.com/meskyA
+// The purpose of this project is to create a professional README generator with all general components. I decided to do this project after learning the importance of README file in developers’ world. It is a guide that gives users a detailed description of a particular project with instructions on how to install and run the project. I learned that writing a README file is not as  straightforward as it sounds. It requires some consideration and effort to make it legit and useful for readers.
+
+// To contribute to a repo, create a personal fork of the project on Github by clicking the ‘fork’ button. Then clone the fork on local computer using the terminal and add the original repo as a remote called upstream.
+
+// Need to install node js on your computer. Also, json package or package-lock need to be installed in the terminal by using the command npm init.
+
+// git clone, npm install, and node index.js
+
+// There is no test at this time.
