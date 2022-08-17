@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 const writeFileAsync = util.promisify(fs.writeFile);
 
@@ -32,7 +33,7 @@ const questions = [{
     type: "list",
     name: "license",
     message: "What kind of license does your project have?",
-    choices: ["MIT", "APACHE 2.0", "BSD 3 Clause", "BSD 2 Clause", "Boost 1.0", "None"]
+    choices: ["MIT", "APACHE", "GPL", "None"]
 },
 {
     type: "input",
@@ -63,60 +64,13 @@ const questions = [{
 
 
 // // TODO: Create a function to write README file
-function writeToFile(data) {
-// function generateMD(data){
-    console.log(data);
-
-    return`
-        #${data.title}
-        ${data.desctiption}
-
-        ## Table of Contents
-
-        - [Project Description](#Description)
-        - [Installation](#Installation)
-        - [Usage] (#Usage)
-        - [Contribution](#Contribution)
-        - [test](#test)     
-        - [Questions](#Questions])
-        - [License](#License)
-
-        ### Description
-        ${data.desctiption}
-
-        ### Installation
-        In order to install the necessary dependencies, open the console and run the following:
-        \`\`\`${data.installation}\`\`\`
-        
-
-        ### Usage
-        ${data.usage}  
-
-        ### Contributing
-        ${data.contributing}
-
-        ### Test
-        In order to test, open the console and run the following
-        \`\`\`${data.test}\`\`\`
-
-        ### Questions
-        Should you have any questions about regarding this project, please contact ${data.author} on [GitHub](https://github.com/ ${data.username} or at
-        ${data.email}
-       
-
-        ### License
-        The project is licensed under:
-        ${data.license}
-
-        `      
-}
 
 // TODO: Create a function to initialize app
 
 function init() {}
 inquirer.prompt(questions)
 .then((data) => {
-    writeFileAsync('generatedREADME.md', writeToFile(data))
+    writeFileAsync('generatedREADME.md', generateMarkdown(data))
 })
 .then(() => console.log('Sucessfully wrote to index.html'))
 .catch((err) => console.error(err));
