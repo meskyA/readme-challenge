@@ -32,7 +32,7 @@ In order to test, open the console and run the following
 ```npm test```
 
 ### Questions
-Should you have any questions about regarding this project, please contact undefined on [GitHub](https://github.com/ meskyA or at
+Should you have any questions about regarding this project, please contact undefined on [GitHub](https://github.com/meskyA) or at
 mesky2015@gmail.com
 
 
